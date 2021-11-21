@@ -11,6 +11,5 @@ def load():
         "!pirshi": "https://i.imgur.com/ScXP4Pw.mp4",
         "!dzmasvetitave": "https://imgur.com/gallery/XPLPf4A",
         "!lesboseli": "https://i.imgur.com/ZTMKi2c.gif",
-        "!hi": "hello motherfucker",
     }
     return gifs
