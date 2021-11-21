@@ -10,6 +10,7 @@ def load():
         "!saxe": "https://i.imgur.com/ZkPBnUk.gif",
         "!pirshi": "https://i.imgur.com/ScXP4Pw.mp4",
         "!dzmasvetitave": "https://imgur.com/gallery/XPLPf4A",
-        "!lesboseli": "https://i.imgur.com/ZTMKi2c.gif"
+        "!lesboseli": "https://i.imgur.com/ZTMKi2c.gif",
+        "!doggy": "something"
     }
     return gifs
