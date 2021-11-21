@@ -1,33 +1,21 @@
 # bot.py
-import os
-import random
-import time
 
+import os
+
+# discord things
 import discord
 from dotenv import load_dotenv
 
+# gifs library 
+from library import load
+
 load_dotenv()
+gifs = load()
 TOKEN = os.getenv('DISCORD_TOKEN')
 
-
-gifs = {
-    "!ussr": "https://tenor.com/bf7w3.gif",
-    "!haha": "https://tenor.com/vzXt.gif",
-    "!bro": "https://tenor.com/PJlo.gif",
-    "!noted": "https://tenor.com/ugjg.gif",
-
-    # nsfw
-    "!mshia": "https://i.imgur.com/TOcr2B7.gif",
-    "!saxe": "https://i.imgur.com/ZkPBnUk.gif",
-    "!pirshi": "https://i.imgur.com/ScXP4Pw.mp4",
-    "!dzmasvetitave": "https://imgur.com/gallery/XPLPf4A",
-    "!lesboseli": "https://i.imgur.com/ZTMKi2c.gif"
-}
-
-
 class Bototo(discord.Client):
-    async def on_message(self, message):
 
+    async def on_message(self, message):
         # თუ ბოტის მიერ არის მესიჯი დააიგნორე
         if message.author == self.user:
             return
@@ -38,9 +26,6 @@ class Bototo(discord.Client):
             if message.content in list(gifs.keys()):
                 response = gifs[message.content]
                 await message.channel.send(response)
-                
-    async def on_member_join(self, member):
-        print('hiiii: '+member)
 
     async def on_ready(self):
         print(f'{client.user.name} has connected to Discord!')
