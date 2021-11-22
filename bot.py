@@ -6,12 +6,13 @@ import os
 import discord
 from dotenv import load_dotenv
 
-# gifs library 
+# gifs library
 from library import load
 
 load_dotenv()
 gifs = load()
 TOKEN = os.getenv('DISCORD_TOKEN')
+
 
 class Bototo(discord.Client):
 
@@ -20,16 +21,25 @@ class Bototo(discord.Client):
         if message.author == self.user:
             return
 
+
+        guild = gifs[str(message.guild.id)]
+        
         if message.content == "!gifs":
-            await message.channel.send(list(gifs.keys()))
+            commands = ""
+            for command in guild.keys():
+                commands += command + '\n'
+            await message.channel.send(commands)
         else:
-            if message.content in list(gifs.keys()):
-                response = gifs[message.content]
-                await message.channel.send(response)
+            if message.content in list(guild.keys()) and message.channel.is_nsfw():
+                response = guild[message.content]
+                
+                if(len(response) == 2):
+                    await message.channel.send(file = discord.File(fp = response[1], filename = response[0]))
+                else:
+                    await message.channel.send(content = response)
 
     async def on_ready(self):
         print(f'{client.user.name} has connected to Discord!')
-
 
 
 if __name__ == "__main__":
